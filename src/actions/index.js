@@ -1,17 +1,16 @@
 import axios from 'axios';
+import { API_KEY } from '../../config.js';
 
-const API_KEY = 'a3cb65f5f2a2ecca46bd4a4bc9519321';
-const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
+const ROOT_URL = `http://api.wunderground.com/api/${API_KEY}/forecast10day/q/`;
 
-export const FETCH_WEATHER = "FETCH_WEATHER";
+export const FETCH_FORECAST = "FETCH_FORECAST";
 
-export function  fetchWeather(city) {
-  const url = `${ROOT_URL}&q=${city},us`;
+export function  fetchForecast(city) {
+  const url = `${ROOT_URL}${city}.json`;
   const request = axios.get(url);
 
   return {
-    type: FETCH_WEATHER,
+    type: FETCH_FORECAST,
     payload: request
-
   };
 }

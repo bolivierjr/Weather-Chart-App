@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import ForecastReducer from './forecast_reducer';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  forecast: ForecastReducer
 });
 
 export default rootReducer;
