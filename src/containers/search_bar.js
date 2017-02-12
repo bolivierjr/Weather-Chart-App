@@ -27,6 +27,7 @@ class SearchBar extends Component {
           className="form-control"
           value={this.state.term}
           onChange={this.onInputChange.bind(this)}
+          required
           
         />
         <span className="input-group-btn">s
