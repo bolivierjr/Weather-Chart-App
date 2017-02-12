@@ -58,29 +58,32 @@ class ShowMap extends Component {
 
   render() {
     const weather = this.showForecast();
-    console.log(weather);
+    const rowCount = weather.length -1;
+    const aspect = 15 / rowCount;
+
 
     return (
       <div className="container">
-        <ResponsiveContainer minHeight={600}>
+        <ResponsiveContainer aspect={aspect} minHeight={600}>
           <AreaChart data={weather}
-            margin={{ top: 10, right: 30, left: 5, bottom: 0 }}>
+            margin={{ top: 10, right: 40, left: 5, bottom: 0 }}>
             <defs>
               <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#ff6358" stopOpacity={0.8}/>
+                <stop offset="95%" stopColor="#ff6358" stopOpacity={0}/>
               </linearGradient>
               <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#4775ff" stopOpacity={0.8}/>
+                <stop offset="95%" stopColor="#4775ff" stopOpacity={0}/>
               </linearGradient>
             </defs>
             <XAxis stroke="#d1cfce" dataKey="weekday_short" />
             <YAxis stroke="#d1cfce" />
             <CartesianGrid stroke="#ffffff" strokeDasharray="3 3" />
             <Tooltip />
-            <Area type="monotone" dataKey="high" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" unit="F" activeDot={{r: 6}} />
-            <Area type="monotone" dataKey="low" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" unit="F" activeDot={{r: 6}} />
+            <Legend align='right' verticalAlign='top' height={36} iconSize={14} />
+            <Area type="monotone" dataKey="high" stroke="#ff6358" fillOpacity={0.8} fill="url(#colorUv)" unit="F" activeDot={{r: 6}} />
+            <Area type="monotone" dataKey="low" stroke="#4775ff" fillOpacity={0.8} fill="url(#colorPv)" unit="F" activeDot={{r: 6}} />
           </AreaChart>
         </ResponsiveContainer>
       </div>
